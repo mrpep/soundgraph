@@ -1,6 +1,0 @@
-setup.cfg
-setup.py
-src/soundgraph.egg-info/PKG-INFO
-src/soundgraph.egg-info/SOURCES.txt
-src/soundgraph.egg-info/dependency_links.txt
-src/soundgraph.egg-info/top_level.txt
