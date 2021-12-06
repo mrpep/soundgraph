@@ -4,6 +4,7 @@ import librosa
 import numpy as np
 
 from .oscillator import *
+from .midi import *
 
 class AudioReader(SoundNode):
     def __init__(self, filename, buffer_size=512, name=None):
