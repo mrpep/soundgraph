@@ -24,14 +24,17 @@ class MidiMapper(SoundNode):
                           last_state=100)
         
     def filter_msg(self,msg):
-        matches = True
-        for k, v in self.state['mapping'].items():
-            if k not in ['map_parameter','mapping']:
-                if hasattr(msg,k) and getattr(msg,k) == v:
-                    pass
-                else:
-                    matches = False
-        return matches
+        if msg is not None:
+            matches = True
+            for k, v in self.state['mapping'].items():
+                if k not in ['map_parameter','mapping','last_state']:
+                    if hasattr(msg,k) and getattr(msg,k) == v:
+                        pass
+                    else:
+                        matches = False
+            return matches
+        else:
+            return False
                 
     def process(self):
         filtered_msgs = [msg for msg in self.state['midi_in'] if self.filter_msg(msg)]
@@ -43,5 +46,6 @@ class MidiMapper(SoundNode):
             else:
                 val = self.state['last_state']
             return val
+
         else:
             return self.state['last_state']
